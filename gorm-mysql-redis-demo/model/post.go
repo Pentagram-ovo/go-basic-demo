@@ -7,6 +7,7 @@ type Post struct {
 	Title     string    `gorm:"column:title"`
 	Content   string    `gorm:"column:content"`
 	UserId    uint      `gorm:"column:user_id"`
+	LikeCount int       `gorm:"column:like_count;default:0"`
 	CreatedAt time.Time `gorm:"column:created_at"`
 	UpdatedAt time.Time `gorm:"column:updated_at"`
 }
