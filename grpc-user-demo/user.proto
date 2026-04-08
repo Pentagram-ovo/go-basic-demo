@@ -1,0 +1,41 @@
+syntax = "proto3"; // 固定版本
+
+// 包名
+package user;
+
+// 生成 Go 代码的路径
+option go_package = "./userpb";
+
+// 1. 用户结构
+message User {
+  uint32 id = 1;
+  string username = 2;
+  string password = 3;
+}
+
+// 2. 创建用户请求
+message CreateUserRequest {
+  User user = 1;
+}
+
+// 3. 创建用户响应
+message CreateUserResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// 4. 获取用户请求
+message GetUserRequest {
+  uint32 id = 1;
+}
+
+// 5. 获取用户响应
+message GetUserResponse {
+  User user = 1;
+}
+
+// 6. 服务定义
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
