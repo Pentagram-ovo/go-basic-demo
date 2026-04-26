@@ -1,0 +1,20 @@
+package model
+
+import (
+	"go-forum/config"
+	"time"
+)
+
+type Post struct {
+	Id        uint      `gorm:"column:id;primary_key"`
+	Title     string    `gorm:"column:title;not null"`
+	Content   string    `gorm:"column:content"`
+	UserID    uint      `gorm:"column:user_id"`
+	LikeCount int       `gorm:"column:like_count;default:0"`
+	CreatedAt time.Time `gorm:"column:created_at"`
+	UpdatedAt time.Time `gorm:"column:updated_at"`
+}
+
+func InitPostTable() {
+	config.DB.AutoMigrate(&Post{})
+}
