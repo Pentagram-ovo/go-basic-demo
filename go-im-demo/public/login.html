@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - Go IM</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .login-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .login-card h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .login-card input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .login-card button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #btnLogin {
+            background: #667eea;
+            color: #fff;
+        }
+        #btnToRegister {
+            background: #f0f0f0;
+            color: #333;
+        }
+        #btnDoRegister {
+            background: #764ba2;
+            color: #fff;
+        }
+        #btnBackToLogin {
+            background: #ccc;
+            color: #333;
+        }
+        .hidden { display: none; }
+        #authMsg {
+            margin-top: 15px;
+            color: #e74c3c;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-card">
+    <h2 id="authTitle">登录</h2>
+    <input type="text" id="authUsername" placeholder="用户名" autocomplete="off">
+    <input type="password" id="authPassword" placeholder="密码">
+    <button id="btnLogin" onclick="login()">登录</button>
+    <button id="btnToRegister" onclick="switchToRegister()">去注册</button>
+    <button id="btnDoRegister" class="hidden" onclick="register()">确认注册</button>
+    <button id="btnBackToLogin" class="hidden" onclick="switchToLogin()">← 返回登录</button>
+    <p id="authMsg"></p>
+</div>
+<script src="static/app.js"></script>
+</body>
+</html>

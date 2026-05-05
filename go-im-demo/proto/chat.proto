@@ -1,0 +1,39 @@
+syntax = "proto3";
+package chat;
+option go_package = "go-im-demo/proto/chat;chat";
+
+service ChatService {
+  rpc SendMessage (SendMessageReq) returns (SendMessageResp);
+  rpc GetHistory (GetHistoryReq) returns (GetHistoryResp);
+}
+
+message SendMessageReq {
+  uint64 from_id = 1;
+  uint64 to_id = 2;   // 直接传对方用户ID
+  string content = 3;
+  bool is_read = 4;
+}
+
+message SendMessageResp {
+  bool success = 1;
+}
+
+message GetHistoryReq {
+  uint64 user_id = 1;
+  uint64 peer_id = 2;
+  int32 page = 3;
+  int32 size = 4;
+}
+
+message Message {
+  uint64 id = 1;
+  uint64 from_id = 2;
+  uint64 to_id = 3;
+  string content = 4;
+  int64 created_at = 5; // unix秒
+}
+
+message GetHistoryResp {
+  repeated Message messages = 1;
+  int64 total = 2;
+}
